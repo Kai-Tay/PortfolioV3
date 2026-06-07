@@ -1,0 +1,18 @@
+/* Custom Font Face Declarations */
+
+@font-face {
+  font-family: 'RocketRaccoon';
+  src: url('./RocketRaccoon.otf') format('opentype'),
+       url('./RocketRaccoon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Better performance */
+}
+
+@font-face {
+  font-family: 'Granika';
+  src: url('./Granika.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

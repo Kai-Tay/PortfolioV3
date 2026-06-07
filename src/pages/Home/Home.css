@@ -1,0 +1,119 @@
+.home-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 6rem 1.25rem 3rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.home-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.home-section h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.home-title {
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.home-subtitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2f2f2f;
+  margin: 0;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.home-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.home-photo-card {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 380px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-profile-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 820px) {
+  .home-section {
+    padding: 7rem 1.25rem 3rem;
+  }
+
+  .home-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .home-info {
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-title {
+    text-align: center;
+  }
+
+  .home-subtitle {
+    text-align: center;
+    max-width: 500px;
+  }
+
+  .home-photo-container {
+    order: -1;
+  }
+
+  .home-photo-card {
+    max-width: 280px;
+  }
+}
