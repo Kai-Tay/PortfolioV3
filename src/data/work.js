@@ -1,23 +1,9 @@
 import questLogo from '../assets/quest-logo.svg'
-import synapxelogo from '../assets/synapxe-logo.svg'
 // import osirisLogo from '../assets/osiris-logo.svg'
 
 export const WORK_EXPERIENCE = [
   {
     id: 1,
-    role: 'Cloud Engineer Intern',
-    company: 'Synapxe',
-    logo: synapxelogo,
-    duration: 'Jun 2026 - Present',
-    description:
-      'At Synapxe, I design and develop an analytics portal tailored to user requirements, configure cloud services to support portal infrastructure, contributing to the future of HealthTech.',
-    highlights: [
-    ],
-    tags: [
-    ]
-  },
-  {
-    id: 2,
     role: 'Machine Learning Intern',
     company: 'Quest Hyphen',
     logo: questLogo,
@@ -40,7 +26,7 @@ export const WORK_EXPERIENCE = [
     ]
   },
   {
-    id: 3,
+    id: 2,
     role: 'Full-Stack Developer Intern',
     company: 'Osiris',
     // logo: osirisLogo,

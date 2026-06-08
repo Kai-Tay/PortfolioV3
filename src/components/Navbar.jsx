@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
@@ -10,26 +11,28 @@ function Navbar() {
       <div className="nav-container">
         <ul className="nav-menu" ref={menuRef}>
           <li className="nav-item">
-            <a href="#home" className="nav-link">
-              Home
-            </a>
+            <Link to="/#about" className="nav-link">
+              About
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="#about" className="nav-link">
-              About
-            </a>
+            <Link to="/#work" className="nav-link">
+              Work
+            </Link>
           </li>
           {/* Insert logo in the middle of the navbar */}
-          <p className="logo">KaiSheng</p>
+          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <p className="logo">KaiSheng</p>
+          </Link>
           <li className="nav-item">
-            <a href="#work" className="nav-link">
-              Work
-            </a>
+            <Link to="/#projects" className="nav-link">
+              Projects
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="#projects" className="nav-link">
-              Projects
-            </a>
+            <Link to="/photography" className="nav-link">
+              Photos
+            </Link>
           </li>
         </ul>
       </div>
@@ -38,3 +41,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

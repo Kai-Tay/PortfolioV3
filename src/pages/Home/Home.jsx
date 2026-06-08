@@ -1,6 +1,7 @@
 import './Home.css';
 
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import profileImg from '../../assets/profile.jpg';
@@ -70,7 +71,7 @@ function Home() {
           gsap.to(photoCard, {
             y: 0,
             scale: 1,
-            backgroundColor: 'rgba(255, 255, 255, 0.16)',
+            backgroundColor: 'rgba(255, 255, 255, 0.25)',
             boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.06)',
             borderColor: 'rgba(255, 255, 255, 0.25)',
             duration: 0.3,
@@ -108,7 +109,10 @@ function Home() {
             Kai Sheng
           </h1>
           <h2 className="home-subtitle">
-            Final Year Software Engineering Student & Avid Photographer
+            Final Year Software Engineering Student &{" "}
+            <Link to="/photography" className="photography-highlight-link">
+              Avid Photographer
+            </Link>
           </h2>
         </div>
         <div className="home-photo-container">
