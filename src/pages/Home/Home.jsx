@@ -1,10 +1,10 @@
-import './Home.css';
+import "./Home.css";
 
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import profileImg from '../../assets/profile.jpg';
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import profileImg from "../../assets/profile.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,24 +18,33 @@ function Home() {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        defaults: { ease: "power3.out" }
+        defaults: { ease: "power3.out" },
       });
 
       // Initial animation for the title, subtitle, and photo card
-      tl.fromTo(titleRef.current,
+      tl.fromTo(
+        titleRef.current,
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.0 }
+        { y: 0, opacity: 1, duration: 1.0 },
       )
-      .fromTo('.home-subtitle',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
-        '-=0.7'
-      )
-      .fromTo('.home-photo-card',
-        { scale: 0.9, opacity: 0, y: 30 },
-        { scale: 1, opacity: 1, y: 0, duration: 1.0, clearProps: 'transform,scale' },
-        '-=0.7'
-      );
+        .fromTo(
+          ".home-subtitle",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.7",
+        )
+        .fromTo(
+          ".home-photo-card",
+          { scale: 0.9, opacity: 0, y: 30 },
+          {
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            duration: 1.0,
+            clearProps: "transform,scale",
+          },
+          "-=0.7",
+        );
 
       // Scroll-triggered animation for the entire section
       gsap.to(sectionRef.current, {
@@ -52,17 +61,17 @@ function Home() {
 
     // Hover effect for the photo card
     if (root) {
-      const photoCard = root.querySelector('.home-photo-card');
+      const photoCard = root.querySelector(".home-photo-card");
       if (photoCard) {
         const onEnter = () => {
           gsap.to(photoCard, {
             y: -8,
             scale: 1.02,
-            backgroundColor: 'rgba(255, 255, 255, 0.32)',
-            boxShadow: '0 12px 40px 0 rgba(0, 0, 0, 0.12)',
-            borderColor: 'rgba(255, 255, 255, 0.35)',
+            backgroundColor: "rgba(255, 255, 255, 0.32)",
+            boxShadow: "0 12px 40px 0 rgba(0, 0, 0, 0.12)",
+            borderColor: "rgba(255, 255, 255, 0.35)",
             duration: 0.3,
-            ease: 'power3.out',
+            ease: "power3.out",
             overwrite: true,
           });
         };
@@ -71,21 +80,21 @@ function Home() {
           gsap.to(photoCard, {
             y: 0,
             scale: 1,
-            backgroundColor: 'rgba(255, 255, 255, 0.25)',
-            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.06)',
-            borderColor: 'rgba(255, 255, 255, 0.25)',
+            backgroundColor: "rgba(255, 255, 255, 0.25)",
+            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.06)",
+            borderColor: "rgba(255, 255, 255, 0.25)",
             duration: 0.3,
-            ease: 'power3.out',
+            ease: "power3.out",
             overwrite: true,
           });
         };
 
-        photoCard.addEventListener('mouseenter', onEnter);
-        photoCard.addEventListener('mouseleave', onLeave);
+        photoCard.addEventListener("mouseenter", onEnter);
+        photoCard.addEventListener("mouseleave", onLeave);
 
         hoverCleanups.push(() => {
-          photoCard.removeEventListener('mouseenter', onEnter);
-          photoCard.removeEventListener('mouseleave', onLeave);
+          photoCard.removeEventListener("mouseenter", onEnter);
+          photoCard.removeEventListener("mouseleave", onLeave);
           gsap.killTweensOf(photoCard);
         });
       }
@@ -101,23 +110,27 @@ function Home() {
     <section id="home" ref={sectionRef} className="home-section">
       <div className="home-container">
         <div className="home-info">
-          <h1 
+          <h1
             ref={titleRef}
-            className="home-title" 
-            style={{fontSize: '7.5vw', fontFamily: 'RocketRaccoon'}}
+            className="home-title"
+            style={{ fontSize: "7.5vw", fontFamily: "RocketRaccoon" }}
           >
             Kai Sheng
           </h1>
-          <h2 className="home-subtitle">
+          <p className="home-subtitle">
             Final Year Software Engineering Student &{" "}
             <Link to="/photography" className="photography-highlight-link">
               Avid Photographer
             </Link>
-          </h2>
+          </p>
         </div>
         <div className="home-photo-container">
           <div className="home-photo-card">
-            <img src={profileImg} alt="Kai Sheng Portrait" className="home-profile-img" />
+            <img
+              src={profileImg}
+              alt="Kai Sheng Portrait"
+              className="home-profile-img"
+            />
           </div>
         </div>
       </div>
