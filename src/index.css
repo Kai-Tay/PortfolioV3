@@ -28,7 +28,7 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh; /* Changed from height: 100vh to allow page scroll */
-  background-image: url('./assets/mesh-gradient.svg');
+  background-image: url('./assets/mesh-gradient.png');
   background-size: cover;
   /* background-position: center ; */
   background-repeat: no-repeat;
