@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home/Home'
@@ -8,30 +9,39 @@ import Contact from './pages/Contact/Contact'
 import Footer from './components/Footer'
 import Photography from './pages/Photography/Photography'
 import ScrollToHashElement from './components/ScrollToHashElement'
+import Loader from './components/Loader'
 import './App.css'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
   return (
-    <Router>
-      <ScrollToHashElement />
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <main className="app-main">
-              <Home />
-              <About />
-              <Work />
-              <Projects />
-              <Contact />
-            </main>
-          }
-        />
-        <Route path="/photography" element={<Photography />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <>
+      {isLoading ? (
+        <Loader onComplete={() => setIsLoading(false)} />
+      ) : (
+        <Router>
+          <ScrollToHashElement />
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <main className="app-main">
+                  <Home />
+                  <About />
+                  <Work />
+                  <Projects />
+                  <Contact />
+                </main>
+              }
+            />
+            <Route path="/photography" element={<Photography />} />
+          </Routes>
+          <Footer />
+        </Router>
+      )}
+    </>
   )
 }
 

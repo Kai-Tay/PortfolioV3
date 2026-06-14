@@ -1,0 +1,60 @@
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0e100f; /* Matches website dark accent */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.loader-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 120%; /* wider than screen to avoid cropped text during start */
+}
+
+.loader-row {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.row-left {
+  justify-content: flex-start;
+}
+
+.row-right {
+  justify-content: flex-end;
+}
+
+.loader-text-wrapper {
+  display: flex;
+  white-space: nowrap;
+}
+
+.loader-marquee-text {
+  font-family: 'RocketRaccoon', monospace, sans-serif;
+  font-size: 7.5vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fffce1; /* Matches portfolio cream/white text color */
+  letter-spacing: -0.02em;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .loader-marquee-text {
+    font-size: 11vw; /* larger text on mobile for premium impact */
+  }
+  .loader-content-container {
+    gap: 0.75rem;
+  }
+}
