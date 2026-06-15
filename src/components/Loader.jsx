@@ -95,7 +95,7 @@ function Loader({ onComplete }) {
         {/* Row 6: Right */}
         <div className="loader-row row-right">
           <div className="loader-text-wrapper" ref={row6Ref}>
-            <span className="loader-marquee-text">35MM FILM / LANDSCAPES / LENS / APERTURE / SHUTTER / 35MM FILM / LANDSCAPES</span>
+            <span className="loader-marquee-text">FILM / LANDSCAPES / LENS / APERTURE / SHUTTER / FILM / LANDSCAPES</span>
           </div>
         </div>
       </div>

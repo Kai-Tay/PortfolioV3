@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home/Home'
@@ -14,6 +14,20 @@ import './App.css'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (isLoading) {
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#0e100f');
+      document.documentElement.style.backgroundColor = '#0e100f';
+      document.body.style.backgroundColor = '#0e100f';
+    } else {
+      // ebebeb is the main background fallback color matching the light mesh gradient design
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#ebebeb');
+      document.documentElement.style.backgroundColor = '#ebebeb';
+      document.body.style.backgroundColor = '#ebebeb';
+    }
+  }, [isLoading]);
 
   return (
     <>
