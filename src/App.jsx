@@ -18,14 +18,10 @@ function App() {
   useEffect(() => {
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (isLoading) {
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#0e100f');
-      document.documentElement.style.backgroundColor = '#0e100f';
-      document.body.style.backgroundColor = '#0e100f';
+      metaThemeColor.setAttribute('content', '#0e100f');
     } else {
       // Use transparent background to allow the CSS background-image to display normally
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#ffffff');
-      document.documentElement.style.backgroundColor = 'transparent';
-      document.body.style.backgroundColor = 'transparent';
+      metaThemeColor.setAttribute('content', 'transparent');
     }
   }, [isLoading]);
 
