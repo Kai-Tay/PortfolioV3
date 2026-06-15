@@ -1,16 +1,56 @@
 import "./Home.css";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import profileImg from "../../assets/profile.jpg";
+// import profileImg from "../../assets/profile.jpg";
+import lanyardImgFront from "../../assets/lanyard-photo-front.jpg";
+import lanyardImgBack from "../../assets/lanyard-photo-back.jpg";
+import Lanyard from "../../components/lanyard/Lanyard.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
   const titleRef = useRef(null);
   const sectionRef = useRef(null);
+
+  const words = [
+    "Avid Photographer",
+    "Full-Stack Developer",
+    "Clown Volleyballer",
+    "AI Integrator",
+    "Creative Thinker",
+  ];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    const currentWord = words[wordIndex];
+    const speed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && displayedText === currentWord) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1500);
+    } else if (isDeleting && displayedText === "") {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % words.length);
+    } else {
+      timer = setTimeout(() => {
+        const nextText = isDeleting
+          ? currentWord.substring(0, displayedText.length - 1)
+          : currentWord.substring(0, displayedText.length + 1);
+        setDisplayedText(nextText);
+      }, speed);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, wordIndex, words]);
+
+  const isPhotography = words[wordIndex] === "Avid Photographer";
 
   useEffect(() => {
     const root = sectionRef.current;
@@ -54,8 +94,6 @@ function Home() {
           end: "bottom center",
           scrub: 1,
         },
-        y: 50,
-        // opacity: 0.8,
       });
     }, sectionRef);
 
@@ -110,6 +148,9 @@ function Home() {
     <section id="home" ref={sectionRef} className="home-section">
       <div className="home-container">
         <div className="home-info">
+          <p className="home-subtitle" style={{ fontSize: "20px" }}>
+            Hi! I'm
+          </p>
           <h1
             ref={titleRef}
             className="home-title"
@@ -118,13 +159,18 @@ function Home() {
             Kai Sheng
           </h1>
           <p className="home-subtitle">
-            Final Year Software Engineering Student &{" "}
-            <Link to="/photography" className="photography-highlight-link">
-              Avid Photographer
-            </Link>
+            Final Year Software Engineering Student @ SMU &{" "}
+            {isPhotography ? (
+              <Link to="/photography" className="photography-highlight-link">
+                {displayedText}
+              </Link>
+            ) : (
+              <span className="skill-highlight">{displayedText}</span>
+            )}
+            <span className="typing-cursor"></span>
           </p>
         </div>
-        <div className="home-photo-container">
+        {/* <div className="home-photo-container">
           <div className="home-photo-card">
             <img
               src={profileImg}
@@ -132,6 +178,14 @@ function Home() {
               className="home-profile-img"
             />
           </div>
+        </div> */}
+        {/* Add lanyard */}
+        <div className="lanyard">
+          <Lanyard
+            position={[0, 0, 15]}
+            backImage={lanyardImgFront}
+            frontImage={lanyardImgBack}
+          />
         </div>
       </div>
     </section>
