@@ -22,10 +22,10 @@ function App() {
       document.documentElement.style.backgroundColor = '#0e100f';
       document.body.style.backgroundColor = '#0e100f';
     } else {
-      // ebebeb is the main background fallback color matching the light mesh gradient design
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#ebebeb');
-      document.documentElement.style.backgroundColor = '#ebebeb';
-      document.body.style.backgroundColor = '#ebebeb';
+      // Use transparent background to allow the CSS background-image to display normally
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#ffffff');
+      document.documentElement.style.backgroundColor = 'transparent';
+      document.body.style.backgroundColor = 'transparent';
     }
   }, [isLoading]);
 
