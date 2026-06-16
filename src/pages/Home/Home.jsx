@@ -73,18 +73,6 @@ function Home() {
           { y: 0, opacity: 1, duration: 0.8 },
           "-=0.7",
         )
-        .fromTo(
-          ".home-photo-card",
-          { scale: 0.9, opacity: 0, y: 30 },
-          {
-            scale: 1,
-            opacity: 1,
-            y: 0,
-            duration: 1.0,
-            clearProps: "transform,scale",
-          },
-          "-=0.7",
-        );
 
       // Scroll-triggered animation for the entire section
       gsap.to(sectionRef.current, {
@@ -183,6 +171,7 @@ function Home() {
         <div className="lanyard">
           <Lanyard
             position={[0, 0, 15]}
+            gravity={[0,-30,0]}
             backImage={lanyardImgFront}
             frontImage={lanyardImgBack}
           />
