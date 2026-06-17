@@ -58,7 +58,7 @@ export default function Lanyard({
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
+        <Physics key={isMobile} gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
           <Band
             isMobile={isMobile}
             frontImage={frontImage}
@@ -125,8 +125,7 @@ function Band({
     anchorPos = new THREE.Vector3(),
     targetPos = new THREE.Vector3();
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
-  const { width: viewportWidth } = useThree((state) => state.viewport);
-  const anchorX = isMobile ? 0 : viewportWidth * 0.23;
+  const anchorX = isMobile ? 0 : 2;
   const { nodes, materials } = useGLTF(cardGLB);
   const texture = useTexture(lanyardImage || lanyard);
   // useTexture must be called unconditionally; use a blank pixel when an image
@@ -202,6 +201,18 @@ function Band({
     }
   }, [hovered, dragged]);
 
+  useEffect(() => {
+    if (dragged) {
+      document.body.classList.add('dragging-lanyard');
+      window.getSelection()?.removeAllRanges();
+    } else {
+      document.body.classList.remove('dragging-lanyard');
+    }
+    return () => {
+      document.body.classList.remove('dragging-lanyard');
+    };
+  }, [dragged]);
+
   useFrame((state, delta) => {
     if (dragged) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
@@ -265,10 +276,11 @@ function Band({
             onPointerOver={isMobile ? undefined : () => hover(true)}
             onPointerOut={isMobile ? undefined : () => hover(false)}
             onPointerUp={isMobile ? undefined : e => (e.target.releasePointerCapture(e.pointerId), drag(false))}
-            onPointerDown={isMobile ? undefined : e => (
-              e.target.setPointerCapture(e.pointerId),
-              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())))
-            )}
+            onPointerDown={isMobile ? undefined : e => {
+              e.target.setPointerCapture(e.pointerId);
+              e.nativeEvent.preventDefault();
+              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
+            }}
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
@@ -280,7 +292,7 @@ function Band({
                 metalness={0.8}
               />
             </mesh>
-            <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
+            <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.} />
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
           </group>
         </RigidBody>

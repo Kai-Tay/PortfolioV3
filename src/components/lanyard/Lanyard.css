@@ -10,8 +10,11 @@
   transform-origin: center;
 }
 
-@media (max-width: 820px) {
-  .lanyard-wrapper {
-    top:-25px;
-  }
+
+body.dragging-lanyard,
+body.dragging-lanyard * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
 }
