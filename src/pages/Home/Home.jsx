@@ -147,15 +147,18 @@ function Home() {
             Kai Sheng
           </h1>
           <p className="home-subtitle">
-            Final Year Software Engineering Student @ SMU &{" "}
-            {isPhotography ? (
-              <Link to="/photography" className="photography-highlight-link">
-                {displayedText}
-              </Link>
-            ) : (
-              <span className="skill-highlight">{displayedText}</span>
-            )}
-            <span className="typing-cursor"></span>
+            Final Year Software Engineering Student @ SMU
+            <span className="desktop-only-subtitle">
+              {" "}&{" "}
+              {isPhotography ? (
+                <Link to="/photography" className="photography-highlight-link">
+                  {displayedText}
+                </Link>
+              ) : (
+                <span className="skill-highlight">{displayedText}</span>
+              )}
+              <span className="typing-cursor"></span>
+            </span>
           </p>
         </div>
         {/* <div className="home-photo-container">
