@@ -6,11 +6,9 @@ export const PHOTOGRAPHY = [
     location: "San Francisco, USA",
     url: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=1200&auto=format&fit=crop",
     camera: "Sony Alpha 7R V",
-    lens: "24-70mm f/2.8 GM II",
-    shutter: "1/250s",
-    aperture: "f/8.0",
-    iso: "100",
-    focalLength: "45mm"
+    focalLength: 45,
+    fNumber: 8.0,
+    exposureTime: "1/250",
   },
   {
     id: 2,
@@ -19,11 +17,9 @@ export const PHOTOGRAPHY = [
     location: "Shinjuku, Tokyo",
     url: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?q=80&w=1200&auto=format&fit=crop",
     camera: "Fujifilm X-T5",
-    lens: "35mm f/1.4 R",
-    shutter: "1/60s",
-    aperture: "f/1.4",
-    iso: "800",
-    focalLength: "35mm"
+    focalLength: 35,
+    fNumber: 1.4,
+    exposureTime: "1/60",
   },
   {
     id: 3,
@@ -32,11 +28,9 @@ export const PHOTOGRAPHY = [
     location: "Dolomites, Italy",
     url: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop",
     camera: "Sony Alpha 7R V",
-    lens: "70-200mm f/4 G OSS",
-    shutter: "1/125s",
-    aperture: "f/11",
-    iso: "100",
-    focalLength: "70mm"
+    focalLength: 70,
+    fNumber: 11,
+    exposureTime: "1/125",
   },
   {
     id: 4,
@@ -45,11 +39,9 @@ export const PHOTOGRAPHY = [
     location: "Sahara Desert",
     url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop",
     camera: "Canon EOS R5",
-    lens: "85mm f/1.2 L USM",
-    shutter: "1/500s",
-    aperture: "f/1.2",
-    iso: "100",
-    focalLength: "85mm"
+    focalLength: 85,
+    fNumber: 1.2,
+    exposureTime: "1/500",
   },
   {
     id: 5,
@@ -58,11 +50,9 @@ export const PHOTOGRAPHY = [
     location: "London, UK",
     url: "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?q=80&w=1200&auto=format&fit=crop",
     camera: "Fujifilm X-T5",
-    lens: "23mm f/2 R WR",
-    shutter: "1/125s",
-    aperture: "f/2.8",
-    iso: "400",
-    focalLength: "23mm"
+    focalLength: 23,
+    fNumber: 2.8,
+    exposureTime: "1/125",
   },
   {
     id: 6,
@@ -71,11 +61,9 @@ export const PHOTOGRAPHY = [
     location: "New York City, USA",
     url: "https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1200&auto=format&fit=crop",
     camera: "Sony Alpha 7R V",
-    lens: "24-70mm f/2.8 GM II",
-    shutter: "1/15s",
-    aperture: "f/4.0",
-    iso: "1600",
-    focalLength: "24mm"
+    focalLength: 24,
+    fNumber: 4.0,
+    exposureTime: "1/15",
   },
   {
     id: 7,
@@ -84,11 +72,9 @@ export const PHOTOGRAPHY = [
     location: "Banff National Park, Canada",
     url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop",
     camera: "Canon EOS R5",
-    lens: "15-35mm f/2.8 L IS",
-    shutter: "1/80s",
-    aperture: "f/8.0",
-    iso: "100",
-    focalLength: "18mm"
+    focalLength: 18,
+    fNumber: 8.0,
+    exposureTime: "1/80",
   },
   {
     id: 8,
@@ -97,10 +83,8 @@ export const PHOTOGRAPHY = [
     location: "Studio",
     url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
     camera: "Sony Alpha 7R V",
-    lens: "85mm f/1.4 GM",
-    shutter: "1/160s",
-    aperture: "f/2.0",
-    iso: "100",
-    focalLength: "85mm"
-  }
+    focalLength: 85,
+    fNumber: 2.0,
+    exposureTime: "1/160",
+  },
 ];

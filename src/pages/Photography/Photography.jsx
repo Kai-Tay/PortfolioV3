@@ -21,11 +21,9 @@ function Photography() {
           image,
           "category": album->title,
           camera,
-          lens,
           focalLength,
-          aperture,
-          shutter,
-          iso
+          fNumber,
+          exposureTime
         }`,
       )
       .then((data) => {
@@ -36,12 +34,10 @@ function Photography() {
             category: photo.category || "Uncategorized",
             location: photo.location,
             url: photo.image ? urlFor(photo.image).url() : "",
-            camera: photo.camera || "N/A",
-            lens: photo.lens || "N/A",
+            camera: photo.camera || "Sony ZV-E10",
             focalLength: photo.focalLength || "N/A",
-            aperture: photo.aperture || "N/A",
-            shutter: photo.shutter || "N/A",
-            iso: photo.iso || "N/A",
+            fNumber: photo.fNumber || "N/A",
+            exposureTime: photo.exposureTime || "N/A",
           }));
           setPhotos(mappedPhotos);
         } else {
@@ -229,26 +225,22 @@ function Photography() {
                       <span className="spec-value">{activePhoto.camera}</span>
                     </div>
                     <div className="spec-item">
-                      <span className="spec-label">Lens</span>
-                      <span className="spec-value">{activePhoto.lens}</span>
-                    </div>
-                    <div className="spec-item">
                       <span className="spec-label">Focal Length</span>
                       <span className="spec-value">
-                        {activePhoto.focalLength}
+                        {activePhoto.focalLength}mm
                       </span>
                     </div>
                     <div className="spec-item">
                       <span className="spec-label">Aperture</span>
-                      <span className="spec-value">{activePhoto.aperture}</span>
+                      <span className="spec-value">
+                        {activePhoto.fNumber}mm
+                      </span>
                     </div>
                     <div className="spec-item">
                       <span className="spec-label">Shutter Speed</span>
-                      <span className="spec-value">{activePhoto.shutter}</span>
-                    </div>
-                    <div className="spec-item">
-                      <span className="spec-label">ISO</span>
-                      <span className="spec-value">{activePhoto.iso}</span>
+                      <span className="spec-value">
+                        {activePhoto.exposureTime}
+                      </span>
                     </div>
                   </div>
                 </div>

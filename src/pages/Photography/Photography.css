@@ -100,7 +100,7 @@
 }
 
 .photo-card {
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 4 / 3;
     cursor: pointer;
