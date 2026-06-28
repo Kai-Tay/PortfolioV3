@@ -66,13 +66,12 @@ function Home() {
         titleRef.current,
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.0 },
-      )
-        .fromTo(
-          ".home-subtitle",
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-          "-=0.7",
-        )
+      ).fromTo(
+        ".home-subtitle",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+        "-=0.7",
+      );
 
       // Scroll-triggered animation for the entire section
       gsap.to(sectionRef.current, {
@@ -148,14 +147,14 @@ function Home() {
           </h1>
           <p className="home-subtitle">
             Final Year Software Engineering Student @ SMU
+            <br />
             <span className="desktop-only-subtitle">
-              {" "}&{" "}
               {isPhotography ? (
                 <Link to="/photography" className="photography-highlight-link">
-                  {displayedText}
+                  & {displayedText}
                 </Link>
               ) : (
-                <span className="skill-highlight">{displayedText}</span>
+                <span className="skill-highlight">& {displayedText}</span>
               )}
               <span className="typing-cursor"></span>
             </span>
@@ -174,7 +173,7 @@ function Home() {
         <div className="lanyard">
           <Lanyard
             position={[0, 0, 15]}
-            gravity={[0,-30,0]}
+            gravity={[0, -30, 0]}
             backImage={lanyardImgFront}
             frontImage={lanyardImgBack}
           />

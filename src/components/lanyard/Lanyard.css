@@ -1,20 +1,20 @@
 .lanyard-wrapper {
-  position: relative;
-  z-index: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: scale(1);
-  transform-origin: center;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    transform: scale(1);
+    transform-origin: center;
 }
-
 
 body.dragging-lanyard,
 body.dragging-lanyard * {
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
 }
