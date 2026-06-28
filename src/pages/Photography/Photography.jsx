@@ -9,6 +9,7 @@ function Photography() {
   const [activePhoto, setActivePhoto] = useState(null);
   const gridRef = useRef(null);
   const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     client
@@ -25,7 +26,7 @@ function Photography() {
           aperture,
           shutter,
           iso
-        }`
+        }`,
       )
       .then((data) => {
         if (data && data.length > 0) {
@@ -48,8 +49,14 @@ function Photography() {
         }
       })
       .catch((err) => {
-        console.error("Failed to fetch from Sanity, using static fallback:", err);
+        console.error(
+          "Failed to fetch from Sanity, using static fallback:",
+          err,
+        );
         setPhotos(PHOTOGRAPHY);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -108,40 +115,51 @@ function Photography() {
         </a>
       </div>
 
+      {/* Dot Loader */}
+      {loading && (
+        <div className="dot-loader">
+          <span className="dot" />
+          <span className="dot" />
+          <span className="dot" />
+        </div>
+      )}
+
       {/* Photography Grid */}
-      <div className="photography-grid" ref={gridRef}>
-        {filteredPhotos.map((photo) => (
-          <div
-            key={photo.id}
-            className="photo-card"
-            onClick={() => setActivePhoto(photo)}
-          >
-            <div className="photo-image-wrapper">
-              <img src={photo.url} alt={photo.title} className="photo-img" />
-              <div className="photo-overlay">
-                <span className="photo-category-tag">{photo.category}</span>
-                <h3 className="photo-card-title">{photo.title}</h3>
-                <span className="photo-location">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="location-icon"
-                  >
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                  {photo.location}
-                </span>
+      {!loading && (
+        <div className="photography-grid" ref={gridRef}>
+          {filteredPhotos.map((photo) => (
+            <div
+              key={photo.id}
+              className="photo-card"
+              onClick={() => setActivePhoto(photo)}
+            >
+              <div className="photo-image-wrapper">
+                <img src={photo.url} alt={photo.title} className="photo-img" />
+                <div className="photo-overlay">
+                  <span className="photo-category-tag">{photo.category}</span>
+                  <h3 className="photo-card-title">{photo.title}</h3>
+                  <span className="photo-location">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="location-icon"
+                    >
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    {photo.location}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Lightbox / Spec Modal */}
       {activePhoto && (
