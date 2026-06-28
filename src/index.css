@@ -1,79 +1,84 @@
 /* Import Custom Fonts */
-@import url('./assets/fonts/fonts.css');
+@import url("./assets/fonts/fonts.css");
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #ebebeb;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #ebebeb;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  font-weight: 10000;
-  color: #2f2f2f;
-  text-decoration: inherit;
+    font-weight: 10000;
+    color: #2f2f2f;
+    text-decoration: inherit;
 }
 
-
 body {
-  margin: 0;
-  padding: 0;
-  min-width: 320px;
-  min-height: 100vh; /* Changed from height: 100vh to allow page scroll */
-  background-image: url('./assets/mesh-gradient.png');
-  background-size: cover;
-  /* background-position: center ; */
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* CRITICAL: Keeps background static while cards scroll! */
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    min-height: 100vh; /* Changed from height: 100vh to allow page scroll */
+    background-image: url("./assets/mesh-gradient.png");
+    background-size: cover;
+    /* background-position: center ; */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* CRITICAL: Keeps background static while cards scroll! */
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+    font-size: 3.2em;
+    line-height: 1.1;
 }
 
 .section-title {
-  font-family: 'RocketRaccoon', sans-serif;
-  color: #333;
-  font-size: 2.5rem;
-  font-weight: normal;
-  margin-top: 0;
-  margin-bottom: 5px;
+    font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "GRAD" 100;
+    color: #333;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 0;
+    margin-bottom: 3.5rem;
+    text-align: left;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
 }
 
 /* Card Animation Wrappers */
@@ -81,7 +86,7 @@ button:focus-visible {
 .work-card-wrapper,
 .project-card-wrapper,
 .contact-card-wrapper {
-  width: 100%;
-  display: flex;
-  box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
 }

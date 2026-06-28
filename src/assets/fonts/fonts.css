@@ -1,18 +1,22 @@
 /* Custom Font Face Declarations */
 
+/* Google Sans via Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght,GRAD@0,17..18,400..700,-25..100;1,17..18,400..700,-25..100&display=swap");
+
 @font-face {
-  font-family: 'RocketRaccoon';
-  src: url('./RocketRaccoon.otf') format('opentype'),
-       url('./RocketRaccoon.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; /* Better performance */
+    font-family: "RocketRaccoon";
+    src:
+        url("./RocketRaccoon.otf") format("opentype"),
+        url("./RocketRaccoon.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Better performance */
 }
 
 @font-face {
-  font-family: 'Granika';
-  src: url('./Granika.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Granika";
+    src: url("./Granika.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
