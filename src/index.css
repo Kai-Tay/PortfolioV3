@@ -8,7 +8,7 @@
 
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #ebebeb;
+    background-color: transparent;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -26,12 +26,8 @@ body {
     margin: 0;
     padding: 0;
     min-width: 320px;
-    min-height: 100vh; /* Changed from height: 100vh to allow page scroll */
-    background-image: url("./assets/mesh-gradient.png");
-    background-size: cover;
-    /* background-position: center ; */
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* CRITICAL: Keeps background static while cards scroll! */
+    min-height: 100vh;
+    background-color: transparent;
 }
 
 h1 {
@@ -50,7 +46,23 @@ h1 {
     letter-spacing: -0.02em;
     line-height: 1.1;
     margin-top: 0;
-    margin-bottom: 3.5rem;
+    margin-bottom: 0.4rem;
+    text-align: left;
+}
+
+/*.section-title::before {
+    content: "## ";
+    font-family: "Google Sans", sans-serif;
+    font-weight: 400;
+    color: #999;
+}*/
+
+.section-subheader {
+    font-family: "Google Sans", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.45);
+    margin: 0 0 2.5rem 0;
     text-align: left;
 }
 
@@ -74,7 +86,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
-        background-color: #ffffff;
+        background-color: transparent;
     }
     button {
         background-color: #f9f9f9;

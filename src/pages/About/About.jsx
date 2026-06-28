@@ -26,12 +26,19 @@ function About() {
         ".about-title",
         { y: 18, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
-      ).fromTo(
-        ".about-card-wrapper",
-        { y: 18, opacity: 0, scale: 0.92 },
-        { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.55 },
-        "-=0.15",
-      );
+      )
+        .fromTo(
+          ".about-subheader",
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4 },
+          "-=0.3",
+        )
+        .fromTo(
+          ".about-card-wrapper",
+          { y: 18, opacity: 0, scale: 0.92 },
+          { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.55 },
+          "-=0.15",
+        );
     }, sectionRef);
 
     if (root) {
@@ -119,6 +126,9 @@ function About() {
     <section id="about" ref={sectionRef} className="about-section">
       <div className="about-container">
         <h2 className="section-title about-title">About Me</h2>
+        <p className="section-subheader about-subheader">
+          Who I am, minus the existential crisis.
+        </p>
         <div className="about-content">
           <div className="about-card-wrapper">
             <div className="about-card about-bio">
