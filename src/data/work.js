@@ -10,9 +10,22 @@ export const WORK_EXPERIENCE = [
     logo: synapxeLogo,
     duration: "June 2026 - Present",
     description:
-      "At Synapxe, I am developing a Patient Care System for the Health SG Team to support national healthcare initiatives. My work focuses on building secure and scalable features to improve clinical workflows.",
-    highlights: [],
-    tags: [],
+      "At Synapxe, I build secure, clinically focused enhancements for the HealthierSG Patient Care System, spanning Angular and Java Spring Boot development, clinical decision support, and responsible AI tooling for general practitioners.",
+    highlights: [
+      "Translated HealthierSG business and functional requirements into Angular frontend and Java Spring Boot backend enhancements.",
+      "Enhanced the Chart.js Graph UI with comparator values to improve the clarity of clinical data visualisations.",
+      "Building a read-only LangGraph chatbot with approved-source tools and neutral, cited responses for general practitioners.",
+      "Developing Presidio and NLI-based guardrails to detect PII and prohibited clinical decision-making requests before patient context reaches the LLM.",
+    ],
+    tags: [
+      "Angular",
+      "Java",
+      "Spring Boot",
+      "Chart.js",
+      "LangGraph",
+      "Presidio",
+      "NLI",
+    ],
   },
   {
     id: 2,
