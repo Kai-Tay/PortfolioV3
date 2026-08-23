@@ -3,19 +3,20 @@
     padding: 2.5rem 1.25rem 2rem;
     margin-top: auto;
     box-sizing: border-box;
+    background: #fffdf6;
 }
 
 .footer-container {
-    max-width: 960px;
+    max-width: 1120px;
     margin: 0 auto;
-    border-radius: 20px;
-    backdrop-filter: blur(17px);
-    -webkit-backdrop-filter: blur(17px);
-    background-color: rgba(255, 255, 255, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-    padding: 1.25rem 1.25rem;
-    display: grid;
+    border-radius: 18px;
+    background-color: #fffdf6;
+    border: 2px solid #2f2f2f;
+    box-shadow: 5px 5px 0 #2f2f2f;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     box-sizing: border-box;
     position: relative;
@@ -92,12 +93,21 @@
     color: rgba(0, 0, 0, 0.55);
 }
 
+.footer-back-to-top {
+    color: #333;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 @media screen and (max-width: 520px) {
     .footer {
         padding: 2rem 1.25rem 1.5rem;
     }
 
-    .footer-link {
-        min-width: 180px;
+    .footer-container {
+        align-items: flex-start;
+        flex-direction: column;
     }
 }

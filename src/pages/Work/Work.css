@@ -2,10 +2,11 @@
     width: 100%;
     padding: 6rem 1.25rem 3rem;
     box-sizing: border-box;
+    background: #b9e6f8;
 }
 
 .work-container {
-    max-width: 960px;
+    max-width: 1120px;
     margin: 0 auto;
 }
 
@@ -18,12 +19,10 @@
 }
 
 .work-card {
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(17px);
-    -webkit-backdrop-filter: blur(17px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+    border: 2px solid #2f2f2f;
+    border-radius: 18px;
+    background: #d8c8ff;
+    box-shadow: 6px 6px 0 #2f2f2f;
     padding: 3rem 2.5rem;
     min-height: 240px;
     display: flex;
@@ -35,6 +34,14 @@
     width: 100%;
     position: relative;
     overflow: hidden;
+}
+
+.work-card-wrapper:nth-child(2) .work-card {
+    background: #ffe17d;
+}
+
+.work-card-wrapper:nth-child(3) .work-card {
+    background: #b8e5c4;
 }
 
 .work-details {
@@ -50,8 +57,8 @@
     height: 60px;
     border-radius: 12px;
     object-fit: contain;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #fffdf6;
+    border: 1.5px solid #2f2f2f;
     padding: 6px;
     box-sizing: border-box;
 }
@@ -126,7 +133,8 @@
     font-size: 11px;
     font-weight: 800;
     color: rgba(0, 0, 0, 0.55);
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(255, 253, 246, 0.72);
+    border: 1.5px solid #2f2f2f;
     padding: 0.35rem 0.65rem;
     border-radius: 12px;
 }

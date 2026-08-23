@@ -1,3 +1,5 @@
+import tradeTermHubPreview from "../assets/trade-term-hub-preview.png";
+
 export const PROJECTS = [
   {
     id: 1,
@@ -14,6 +16,7 @@ export const PROJECTS = [
       'WebSocket',
       'GitHub Actions'
     ],
+    media: null,
     demoLink: '',
     codeLink: ''
   },
@@ -32,7 +35,28 @@ export const PROJECTS = [
       'AWS',
       'WebSocket'
     ],
+    media: {
+      type: "image",
+      src: tradeTermHubPreview,
+      alt: "Trade Term Hub tariff calculator preview",
+    },
     demoLink: '',
     codeLink: 'https://github.com/Kyzuma/CSD_Tariffic'
+  },
+  {
+    id: 3,
+    title: 'SentinelNav',
+    description:
+      'Secure pedestrian and transit routing app for safer night walking. It uses OpenStreetMap signals to tailor routes, offers a privacy-conscious SOS workflow with local emergency contacts, and provides continuous audio navigation alerts to keep users aware without looking at their screens.',
+    tags: [
+      'Spring Boot',
+      'React',
+      'GraphHopper',
+      'OpenStreetMap',
+      'Docker'
+    ],
+    media: null,
+    demoLink: '',
+    codeLink: ''
   }
 ];

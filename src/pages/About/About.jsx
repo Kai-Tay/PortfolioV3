@@ -46,11 +46,9 @@ function About() {
       cards.forEach((card) => {
         const onEnter = () => {
           gsap.to(card, {
-            y: -6,
-            scale: 1.015,
-            backgroundColor: "rgba(255, 255, 255, 0.32)",
-            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.08)",
-            borderColor: "rgba(255, 255, 255, 0.35)",
+            y: -4,
+            scale: 1.01,
+            boxShadow: "10px 10px 0 #2f2f2f",
             duration: 0.25,
             ease: "power3.out",
             overwrite: true,
@@ -61,9 +59,7 @@ function About() {
           gsap.to(card, {
             y: 0,
             scale: 1,
-            backgroundColor: "rgba(255, 255, 255, 0.25)",
-            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.06)",
-            borderColor: "rgba(255, 255, 255, 0.25)",
+            boxShadow: "7px 7px 0 #2f2f2f",
             duration: 0.25,
             ease: "power3.out",
             overwrite: true,
@@ -125,10 +121,10 @@ function About() {
   return (
     <section id="about" ref={sectionRef} className="about-section">
       <div className="about-container">
-        <h2 className="section-title about-title">About Me</h2>
-        <p className="section-subheader about-subheader">
+        <p className="section-title about-title">About Me</p>
+        <h2 className="section-subheader about-subheader">
           Who I am, minus the existential crisis.
-        </p>
+        </h2>
         <div className="about-content">
           <div className="about-card-wrapper">
             <div className="about-card about-bio">

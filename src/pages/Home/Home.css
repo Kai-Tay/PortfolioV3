@@ -27,6 +27,8 @@
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+    position: relative;
+    z-index: 11;
 }
 
 .home-section h1 {
@@ -49,6 +51,29 @@
     color: #2f2f2f;
     margin: 0;
     letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+
+.home-role-line,
+.home-typing-text,
+.photography-highlight-link {
+    font-family: "Google Sans", sans-serif;
+}
+
+.home-intro {
+    margin: 0 0 0.55rem;
+    color: #2f2f2f;
+    font-family: "Google Sans", sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+}
+
+.home-role-line {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     line-height: 1.5;
 }
 
@@ -98,6 +123,35 @@
     display: inline-block;
     vertical-align: -2px;
     animation: cursor-blink 1s step-end infinite;
+}
+
+.home-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 2rem;
+    padding: 0.7rem 1rem;
+    border: 2px solid #2f2f2f;
+    border-radius: 10px;
+    background: #fffFFF;
+    box-shadow: 4px 4px 0 #2f2f2f;
+    color: #2f2f2f;
+    font-family: "Google Sans", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.home-cta:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #2f2f2f;
+}
+
+.home-cta:active {
+    transform: translate(4px, 4px) scale(0.98);
+    box-shadow: 0 0 0 #2f2f2f;
 }
 
 .lanyard {

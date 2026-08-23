@@ -48,11 +48,9 @@ function Work() {
       cards.forEach((el) => {
         const onEnter = () => {
           gsap.to(el, {
-            y: -6,
-            scale: 1.015,
-            backgroundColor: "rgba(255, 255, 255, 0.32)",
-            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.08)",
-            borderColor: "rgba(255, 255, 255, 0.35)",
+            y: -4,
+            scale: 1.01,
+            boxShadow: "9px 9px 0 #2f2f2f",
             duration: 0.25,
             ease: "power3.out",
             overwrite: true,
@@ -63,9 +61,7 @@ function Work() {
           gsap.to(el, {
             y: 0,
             scale: 1,
-            backgroundColor: "rgba(255, 255, 255, 0.25)",
-            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.06)",
-            borderColor: "rgba(255, 255, 255, 0.25)",
+            boxShadow: "6px 6px 0 #2f2f2f",
             duration: 0.25,
             ease: "power3.out",
             overwrite: true,
@@ -92,10 +88,10 @@ function Work() {
   return (
     <section id="work" ref={sectionRef} className="work-section">
       <div className="work-container">
-        <h2 className="section-title work-title">Work Experience</h2>
-        <p className="section-subheader work-subheader">
+        <p className="section-title work-title">Work Experience</p>
+        <h2 className="section-subheader work-subheader">
           Places that paid me to do actual work.
-        </p>
+        </h2>
         <div className="work-content">
           {WORK_EXPERIENCE.map((job) => (
             <div key={job.id} className="work-card-wrapper">

@@ -6,6 +6,48 @@ import { PROJECTS } from "../../data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function renderProjectMedia(media, projectTitle) {
+  if (!media?.src) {
+    return (
+      <div className="project-media-placeholder" aria-label={`${projectTitle} preview coming soon`}>
+        <span>Preview coming soon</span>
+      </div>
+    );
+  }
+
+  if (media.type === "video") {
+    return (
+      <div className="project-media-frame">
+        <video
+          className="project-media"
+          src={media.src}
+          poster={media.poster}
+          controls
+          playsInline
+        />
+      </div>
+    );
+  }
+
+  if (media.type === "image" || media.type === "gif") {
+    return (
+      <div className="project-media-frame">
+        <img
+          className="project-media"
+          src={media.src}
+          alt={media.alt || `${projectTitle} preview`}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="project-media-placeholder" aria-label={`${projectTitle} preview coming soon`}>
+      <span>Preview coming soon</span>
+    </div>
+  );
+}
+
 function Projects() {
   const sectionRef = useRef(null);
 
@@ -33,12 +75,6 @@ function Projects() {
           { y: 12, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.4 },
           "-=0.3",
-        )
-        .fromTo(
-          ".project-card-wrapper",
-          { y: 18, opacity: 0, scale: 0.92 },
-          { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.55 },
-          "-=0.15",
         );
     }, sectionRef);
 
@@ -48,11 +84,9 @@ function Projects() {
       cards.forEach((el) => {
         const onEnter = () => {
           gsap.to(el, {
-            y: -6,
-            scale: 1.015,
-            backgroundColor: "rgba(255, 255, 255, 0.32)",
-            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.08)",
-            borderColor: "rgba(255, 255, 255, 0.35)",
+            y: -4,
+            scale: 1.01,
+            boxShadow: "9px 9px 0 #2f2f2f",
             duration: 0.25,
             ease: "power3.out",
             overwrite: true,
@@ -63,9 +97,7 @@ function Projects() {
           gsap.to(el, {
             y: 0,
             scale: 1,
-            backgroundColor: "rgba(255, 255, 255, 0.25)",
-            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.06)",
-            borderColor: "rgba(255, 255, 255, 0.25)",
+            boxShadow: "6px 6px 0 #2f2f2f",
             duration: 0.25,
             ease: "power3.out",
             overwrite: true,
@@ -162,51 +194,55 @@ function Projects() {
   return (
     <section id="projects" ref={sectionRef} className="projects-section">
       <div className="projects-container">
-        <h2 className="section-title projects-title">My Projects</h2>
-        <p className="section-subheader projects-subheader">
+        <p className="section-title projects-title">My Projects</p>
+        <h2 className="section-subheader projects-subheader">
           Side quests that escaped the lab notebook.
-        </p>
+        </h2>
         <div className="projects-content">
-          {PROJECTS.map((project) => (
+          {PROJECTS.map((project, projectIndex) => (
             <div key={project.id} className="project-card-wrapper">
               <div className="project-card">
-                <div className="project-details">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                </div>
-                <div className="project-meta">
-                  <div className="project-tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="project-tag">
-                        {tag}
-                      </span>
-                    ))}
+                {renderProjectMedia(project.media, project.title)}
+                <div className="project-card-content">
+                  <div className="project-details">
+                    <p className="project-counter" aria-live="polite">
+                      {projectIndex + 1} / {PROJECTS.length}
+                    </p>
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-description">
+                      {project.description}
+                    </p>
                   </div>
-                  <div className="project-links">
-                    {project.demoLink === "" ? (
-                      <></>
-                    ) : (
-                      <a
-                        className="project-link project-link-demo"
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Live Demo
-                      </a>
-                    )}
-                    {project.codeLink === "" ? (
-                      <></>
-                    ) : (
-                      <a
-                        className="project-link project-link-code"
-                        href={project.codeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Code
-                      </a>
-                    )}
+                  <div className="project-meta">
+                    <div className="project-tags">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="project-tag">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-links">
+                      {project.demoLink && (
+                        <a
+                          className="project-link project-link-demo"
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                      )}
+                      {project.codeLink && (
+                        <a
+                          className="project-link project-link-code"
+                          href={project.codeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View Code
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

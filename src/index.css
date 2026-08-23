@@ -42,12 +42,13 @@ h1 {
     font-style: normal;
     font-variation-settings: "GRAD" 100;
     color: #333;
-    font-size: 2.2rem;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
     margin-top: 0;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.55rem;
     text-align: left;
+    text-transform: uppercase;
 }
 
 /*.section-title::before {
@@ -58,10 +59,12 @@ h1 {
 }*/
 
 .section-subheader {
-    font-family: "Google Sans", sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.45);
+    font-family: "RocketRaccoon", sans-serif;
+    font-size: clamp(2.7rem, 4.75vw, 5rem);
+    font-weight: 400;
+    color: #333;
+    letter-spacing: -0.075em;
+    line-height: 0.83;
     margin: 0 0 2.5rem 0;
     text-align: left;
 }

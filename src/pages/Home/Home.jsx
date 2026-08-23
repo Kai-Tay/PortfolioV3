@@ -135,7 +135,7 @@ function Home() {
     <section id="home" ref={sectionRef} className="home-section">
       <div className="home-container">
         <div className="home-info">
-          <p className="home-subtitle" style={{ fontSize: "20px" }}>
+          <p className="home-intro">
             Hi! I'm
           </p>
           <h1
@@ -145,7 +145,7 @@ function Home() {
           >
             Kai Sheng
           </h1>
-          <p className="home-subtitle">
+          <p className="home-subtitle home-role-line">
             Final Year Software Engineering Student @ SMU
             <br />
             <span className="desktop-only-subtitle">
@@ -154,11 +154,14 @@ function Home() {
                   & {displayedText}
                 </Link>
               ) : (
-                <span className="skill-highlight">& {displayedText}</span>
+                <span className="skill-highlight home-typing-text">& {displayedText}</span>
               )}
               <span className="typing-cursor"></span>
             </span>
           </p>
+          <a className="home-cta" href="#projects">
+            See what I&apos;m working on <span aria-hidden="true">↓</span>
+          </a>
         </div>
         {/* <div className="home-photo-container">
           <div className="home-photo-card">
