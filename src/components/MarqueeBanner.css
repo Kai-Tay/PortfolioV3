@@ -1,0 +1,54 @@
+.marquee-banner {
+    display: grid;
+    gap: 0.1rem;
+    overflow: hidden;
+    padding: 0.65rem 0;
+    background: #2f2f2f;
+    color: #fffdf6;
+}
+
+.marquee-banner-row {
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee-banner-track {
+    display: flex;
+    width: max-content;
+    font-family: "RocketRaccoon", sans-serif;
+    font-size: clamp(1.15rem, 2.1vw, 2.25rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.marquee-banner-track span {
+    display: block;
+    padding-right: 1rem;
+}
+
+.marquee-banner-row-left .marquee-banner-track {
+    animation: marquee-move-left 68s linear infinite;
+}
+
+.marquee-banner-row-right .marquee-banner-track {
+    animation: marquee-move-right 74s linear infinite;
+}
+
+@keyframes marquee-move-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-move-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-banner-track {
+        animation: none;
+    }
+}
