@@ -9,6 +9,7 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    background: #b9e6f8;
 }
 
 .home-container {
