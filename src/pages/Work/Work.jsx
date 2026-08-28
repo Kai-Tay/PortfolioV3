@@ -18,7 +18,7 @@ function Work() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 85%",
-          toggleActions: "play reverse play reverse",
+          once: true,
         },
         defaults: { ease: "back.out(1.7)" },
       });
