@@ -12,6 +12,31 @@ function ArrowIcon({ direction }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d={direction === "previous" ? "m14 6-6 6 6 6" : "m10 6 6 6-6 6"} /></svg>;
 }
 
+function PhotoOpenButton({ photo, onOpen }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <button
+      type="button"
+      className={`photo-open-button ${isLoaded ? "is-loaded" : "is-loading"}`}
+      onClick={onOpen}
+      aria-label={`View ${photo.title} larger`}
+      aria-busy={!isLoaded}
+    >
+      <img
+        src={photo.url}
+        alt={photo.title}
+        className="photo-img"
+        loading="eager"
+        decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
+      />
+      <span className="photo-open-icon" aria-hidden="true">↗</span>
+    </button>
+  );
+}
+
 function Photography() {
   const [activePhoto, setActivePhoto] = useState(null);
   const [activeFilter, setActiveFilter] = useState("All");
@@ -124,10 +149,7 @@ function Photography() {
           <div className="photography-grid" ref={gridRef}>
             {visiblePhotos.map((photo, index) => (
               <article className={`photo-card photo-card-${(index % 4) + 1}`} key={photo.id}>
-                <button type="button" className="photo-open-button" onClick={() => setActivePhoto(photo)} aria-label={`View ${photo.title} larger`}>
-                  <img src={photo.url} alt={photo.title} className="photo-img" loading={index > 2 ? "lazy" : "eager"} />
-                  <span className="photo-open-icon" aria-hidden="true">↗</span>
-                </button>
+                <PhotoOpenButton photo={photo} onOpen={() => setActivePhoto(photo)} />
                 <span className="photo-category-tag">{photo.category}</span>
                 <div className="photo-card-caption">
                   <div><h3>{photo.title}</h3><p>{photo.location}</p></div>
