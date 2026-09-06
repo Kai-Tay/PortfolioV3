@@ -1,4 +1,6 @@
-import tradeTermHubPreview from "../assets/trade-term-hub-preview.png";
+import tradeTermHubPreview from "../assets/trade-term-hub-preview.gif";
+import sentinelNavPreview from "../assets/sentinelnav-preview.png";
+import dellClinicPreview from "../assets/dell-clinic-preview.gif";
 
 export const PROJECTS = [
   {
@@ -16,7 +18,11 @@ export const PROJECTS = [
       'WebSocket',
       'GitHub Actions'
     ],
-    media: null,
+    media: {
+      type: "image",
+      src: dellClinicPreview,
+      alt: "Dell Clinic telemedicine platform preview",
+    },
     demoLink: '',
     codeLink: ''
   },
@@ -55,7 +61,11 @@ export const PROJECTS = [
       'OpenStreetMap',
       'Docker'
     ],
-    media: null,
+    media: {
+      type: "image",
+      src: sentinelNavPreview,
+      alt: "SentinelNav safe walking route map preview",
+    },
     demoLink: '',
     codeLink: ''
   }
