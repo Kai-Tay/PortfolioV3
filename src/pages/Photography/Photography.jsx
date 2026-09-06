@@ -12,16 +12,22 @@ function ArrowIcon({ direction }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d={direction === "previous" ? "m14 6-6 6 6 6" : "m10 6 6 6-6 6"} /></svg>;
 }
 
-function PhotoOpenButton({ photo, onOpen }) {
-  const [isLoaded, setIsLoaded] = useState(false);
+function preloadPhoto(url) {
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.onload = resolve;
+    image.onerror = resolve;
+    image.src = url;
+  });
+}
 
+function PhotoOpenButton({ photo, onOpen }) {
   return (
     <button
       type="button"
-      className={`photo-open-button ${isLoaded ? "is-loaded" : "is-loading"}`}
+      className="photo-open-button"
       onClick={onOpen}
       aria-label={`View ${photo.title} larger`}
-      aria-busy={!isLoaded}
     >
       <img
         src={photo.url}
@@ -29,8 +35,6 @@ function PhotoOpenButton({ photo, onOpen }) {
         className="photo-img"
         loading="eager"
         decoding="async"
-        onLoad={() => setIsLoaded(true)}
-        onError={() => setIsLoaded(true)}
       />
       <span className="photo-open-icon" aria-hidden="true">↗</span>
     </button>
@@ -40,38 +44,74 @@ function PhotoOpenButton({ photo, onOpen }) {
 function Photography() {
   const [activePhoto, setActivePhoto] = useState(null);
   const [activeFilter, setActiveFilter] = useState("All");
-  const [photos, setPhotos] = useState(PHOTOGRAPHY);
+  const [photos, setPhotos] = useState([]);
+  const [isGalleryReady, setIsGalleryReady] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState({ loaded: 0, total: 0 });
   const gridRef = useRef(null);
 
   useEffect(() => {
-    client
-      .fetch(
+    let isActive = true;
+
+    const loadGallery = async () => {
+      let galleryPhotos = PHOTOGRAPHY;
+      let requestTimeout;
+
+      try {
+        const data = await Promise.race([
+          client.fetch(
         `*[_type == "photo"]{
           _id, title, location, image, "category": album->title,
           camera, focalLength, fNumber, exposureTime
         }`,
-      )
-      .then((data) => {
-        if (!data?.length) return;
-        setPhotos(
-          data
-            .filter((photo) => photo.image)
-            .map((photo) => ({
-              id: photo._id,
-              title: photo.title || "Untitled frame",
-              category: photo.category || "Uncategorized",
-              location: photo.location || "Unknown location",
-              url: urlFor(photo.image).url(),
-              camera: photo.camera || "Sony ZV-E10",
-              focalLength: photo.focalLength || "N/A",
-              fNumber: photo.fNumber || "N/A",
-              exposureTime: photo.exposureTime || "N/A",
-            })),
-        );
-      })
-      .catch(() => {
+          ),
+          new Promise((_, reject) => {
+            requestTimeout = setTimeout(() => reject(new Error("Photo request timed out")), 5000);
+          }),
+        ]);
+        const sanityPhotos = (data || [])
+          .filter((photo) => photo.image)
+          .map((photo) => ({
+            id: photo._id,
+            title: photo.title || "Untitled frame",
+            category: photo.category || "Uncategorized",
+            location: photo.location || "Unknown location",
+            url: urlFor(photo.image).width(1200).quality(85).url(),
+            camera: photo.camera || "Sony ZV-E10",
+            focalLength: photo.focalLength || "N/A",
+            fNumber: photo.fNumber || "N/A",
+            exposureTime: photo.exposureTime || "N/A",
+          }));
+
+        if (sanityPhotos.length) galleryPhotos = sanityPhotos;
+      } catch {
         // The local collection remains visible while the CMS is unavailable.
-      });
+      } finally {
+        clearTimeout(requestTimeout);
+      }
+
+      if (!isActive) return;
+
+      setLoadingProgress({ loaded: 0, total: galleryPhotos.length });
+      let loaded = 0;
+
+      await Promise.all(
+        galleryPhotos.map(async (photo) => {
+          await preloadPhoto(photo.url);
+          loaded += 1;
+          if (isActive) setLoadingProgress({ loaded, total: galleryPhotos.length });
+        }),
+      );
+
+      if (!isActive) return;
+      setPhotos(galleryPhotos);
+      setIsGalleryReady(true);
+    };
+
+    loadGallery();
+
+    return () => {
+      isActive = false;
+    };
   }, []);
 
   const filters = useMemo(
@@ -89,6 +129,7 @@ function Photography() {
   }, [activeFilter, filters]);
 
   useEffect(() => {
+    if (!isGalleryReady) return;
     const cards = gridRef.current?.querySelectorAll(".photo-card");
     if (!cards?.length) return;
     gsap.fromTo(
@@ -96,7 +137,7 @@ function Photography() {
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, stagger: 0.07, duration: 0.45, ease: "power2.out", overwrite: true },
     );
-  }, [visiblePhotos]);
+  }, [isGalleryReady, visiblePhotos]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -112,8 +153,12 @@ function Photography() {
     setActivePhoto(visiblePhotos[(activeIndex + direction + visiblePhotos.length) % visiblePhotos.length]);
   };
 
+  const loadingPercent = loadingProgress.total
+    ? (loadingProgress.loaded / loadingProgress.total) * 100
+    : 0;
+
   return (
-    <main className="photography-page">
+    <main className="photography-page" aria-busy={!isGalleryReady}>
       <section className="photography-gallery" aria-labelledby="gallery-title">
         <div className="photography-container">
           <div className="gallery-heading">
@@ -129,6 +174,38 @@ function Photography() {
               </a>
             </div>
           </div>
+
+          {!isGalleryReady ? (
+            <div className="gallery-loader" aria-label="Loading photography gallery">
+          <div className="gallery-loader-content" role="status" aria-live="polite">
+            <div className="gallery-loader-camera" aria-hidden="true">
+              <span className="gallery-loader-flash" />
+              <span className="gallery-loader-lens"><span /></span>
+            </div>
+            <div className="gallery-loader-photos" aria-hidden="true">
+              <span /><span /><span />
+            </div>
+            <p className="gallery-loader-kicker">DEVELOPING FILM</p>
+            <h1>Gathering the good light...</h1>
+            <div
+              className="gallery-loader-progress"
+              role="progressbar"
+              aria-label="Photo loading progress"
+              aria-valuemin="0"
+              aria-valuemax={Math.max(loadingProgress.total, 1)}
+              aria-valuenow={loadingProgress.loaded}
+            >
+              <span style={{ width: `${loadingPercent}%` }} />
+            </div>
+            <p className="gallery-loader-count">
+              {loadingProgress.total
+                ? `${loadingProgress.loaded} of ${loadingProgress.total} photos ready`
+                : "Finding the frames..."}
+            </p>
+          </div>
+            </div>
+          ) : (
+            <>
 
           <div className="photo-filter-bar">
             <div className="photo-filter-buttons" aria-label="Filter photography collection">
@@ -158,6 +235,8 @@ function Photography() {
               </article>
             ))}
           </div>
+            </>
+          )}
         </div>
       </section>
 

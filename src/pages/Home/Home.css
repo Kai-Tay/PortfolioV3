@@ -126,11 +126,17 @@
     animation: cursor-blink 1s step-end infinite;
 }
 
+.home-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+
 .home-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    margin-top: 2rem;
     padding: 0.7rem 1rem;
     border: 2px solid #2f2f2f;
     border-radius: 10px;
@@ -202,6 +208,11 @@
         text-align: center;
         max-width: 500px;
     }
+
+    .home-cta-group {
+        justify-content: center;
+    }
+
     .desktop-only-subtitle {
         display: none;
     }

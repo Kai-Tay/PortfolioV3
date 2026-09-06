@@ -159,9 +159,14 @@ function Home() {
               <span className="typing-cursor"></span>
             </span>
           </p>
-          <a className="home-cta" href="#projects">
-            See what I&apos;m working on <span aria-hidden="true">↓</span>
-          </a>
+          <div className="home-cta-group">
+            <a className="home-cta" href="#projects">
+              See what I&apos;m working on <span aria-hidden="true">↓</span>
+            </a>
+            <Link to="/photography" className="home-cta">
+              Check out my photos <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </div>
         {/* <div className="home-photo-container">
           <div className="home-photo-card">
